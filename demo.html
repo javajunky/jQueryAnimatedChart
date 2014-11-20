@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pie Charts</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="chart" class="chart_wrapper">
+        <input type="text" class="dial chart_anim_1" data-fgColor="#fff" data-bgColor="#ccc"  />
+        <div class="circle gray light">
+            <span class="title">Chart Title 1</span>
+            <span class="tagline">tagline</span>
+            <span class="pie_value" id="eh_value">%</span>
+        </div>
+    </div>
+    <div id="chart2" class="chart_wrapper">
+        <input type="text" class="dial chart_anim_2" data-fgColor="#fff" data-bgColor="#ccc"  />        
+        <div class="circle pink dark">
+            <span class="title">Chart Title 2</span>
+            <span class="tagline">tagline</span>
+            <span class="pie_value" id="bh_value">%</span>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="http://anthonyterrien.com/js/jquery.knob.js"></script>
+    <script>
+    $(document).ready(function() {
+        /* create jQuery knob with .dial class */
+        $(".dial").knob({
+            'readOnly': true
+        })
+
+        /* Animate chart class from startVal to endVal */
+        function animateChart (chartClass, startVal, endVal) {
+            $({value: startVal}).animate({value: endVal}, {
+                duration: 1000,
+                easing: 'swing',
+                step: function () {
+                    $('.' + chartClass).val(Math.ceil(this.value)).trigger('change');
+                }
+            });
+        }
+        animateChart('chart_anim_1', 0, 79);
+        animateChart('chart_anim_2', 0, 96);
+
+        /* Update bh_value when input.animate changes */
+        $(".chart_anim_1").change(function () {
+            $("#eh_value").text($(this).val() + "%");
+        });
+        $(".chart_anim_2").change(function () {
+            $("#bh_value").text($(this).val() + "%");
+        });
+    });
+    </script>
+</body>
+</html>
+
+
