@@ -14,3 +14,9 @@ Animated jQuery pie chart built on top of [jQuery Knob](http://anthonyterrien.co
     </div>
 </div>
 ```
+
+## Compatibility
+Tested on Firefox 33.1, Chrome 38.0, Safari 8.0, Mobile Safari 7.0, Android Chrome 39.0.
+
+## License
+jQueryAnimatedChart is licensed under the [MIT License](http://opensource.org/licenses/MIT).
