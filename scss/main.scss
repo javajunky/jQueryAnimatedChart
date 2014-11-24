@@ -1,4 +1,6 @@
 @import "reset";
+
+/* main.scss */
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -14,7 +16,11 @@ body {
     $circle_label_rad: $pie_chart_dia/2; // circle label radius
     
     position: relative;
-    margin:10px; // margin around pie chart
+    
+    /* Margin around pie chart. This is optional. */
+    margin:10px; 
+
+    /* This forces the charts to display inline. This is added for this demo and is optional. */
     display: inline-block;
 
     canvas {
@@ -25,9 +31,6 @@ body {
         width: $pie_chart_dia;
         height: $pie_chart_dia;
     }
-    input {
-        display:none;
-    }
 
     .circle {
         position: absolute;
@@ -35,7 +38,9 @@ body {
         left: ($pie_chart_dia - $circle_label_dia)/2;
         width: $circle_label_dia;
         height: $circle_label_dia;
-        padding-top: 40px;
+        
+        /* positioning label text vertically */
+        padding-top: 50px; 
         -webkit-border-radius: $circle_label_rad;
         -moz-border-radius: $circle_label_rad;
         border-radius: $circle_label_rad;

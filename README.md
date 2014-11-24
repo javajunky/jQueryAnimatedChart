@@ -1,12 +1,16 @@
 jQueryAnimatedChart
 ===================
 
-Animated jQuery pie chart built on top of [jQuery Knob](http://anthonyterrien.com/knob/). Chart has a colored circle label that has a title, a tagline and a percentage value. Chart can be customized through SCSS.
+Animated jQuery pie chart built on top of [jQuery Knob](http://anthonyterrien.com/knob/). Chart has a colored circle label that has a title, a tagline and a percentage value. Chart can be customized through SCSS. 
 
-## Example
+## Documentation
+Be sure to include the `css/main.css` and `js/jquery.knob.js`. The HTML below is using the circle label. If you do not wish to use the circle label, you may exclude the `div` with the `circle` class. 
+
 ``` html
-<div id="chart" class="chart_wrapper">
+<div id="chart1" class="chart_wrapper">
     <input type="text" class="dial chart_anim_1" data-fgColor="#fff" data-bgColor="#ccc"  />
+
+    <!-- gray circle label -->
     <div class="circle gray light">
         <span class="title">Chart Title 1</span>
         <span class="tagline">tagline</span>
@@ -14,6 +18,29 @@ Animated jQuery pie chart built on top of [jQuery Knob](http://anthonyterrien.co
     </div>
 </div>
 ```
+
+If you do not use the label, you need to include `data-width` and `data-height` on your `input` element.
+
+``` html
+<div id="chart3" class="chart_wrapper">
+    <!-- no circle label -->
+    <input type="text" class="dial chart_anim_3" data-fgColor="#444444" data-bgColor="#ccc" data-width="225" data-height="225" />
+</div>
+```
+
+Call `animateChart` to set the initial and final value, and to trigger animation.
+
+``` javascript
+animateChart('chart_anim_1', 0, 79); // Animates chart with ID 'chart_anim_1' from 0 to 79
+```
+
+
+
+
+
+### Customize SCSS
+* __$pie_chart_dia__: pie chart diameter
+* __$circle_label_dia__: circle label diameter
 
 ## Compatibility
 Tested on Firefox 33.1, Chrome 38.0, Safari 8.0, Mobile Safari 7.0, Android Chrome 39.0.
