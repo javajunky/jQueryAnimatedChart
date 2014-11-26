@@ -1,9 +1,5 @@
 .DS_Store
 ._*
 *.alias
-*.pbxuser
-*.mode1v3
-*.orig
-
 .sass-cache/
 config.codekit
