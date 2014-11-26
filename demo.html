@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <div id="chart1" class="chart_wrapper">
-        <input type="text" class="dial anim chart_anim_1" data-fgColor="#fff" data-bgColor="#ccc"  />
+    <div class="chart_wrapper">
+        <input id="chart_anim_1"type="text" class="dial" data-fgColor="#fff" data-bgColor="#ccc"  />
 
         <!-- gray circle label -->
         <div class="circle gray light">
@@ -17,8 +17,8 @@
         </div>
     </div>
 
-    <div id="chart2" class="chart_wrapper">
-        <input type="text" class="dial anim chart_anim_2" data-fgColor="#fff" data-bgColor="#ccc"  />     
+    <div class="chart_wrapper">
+        <input id="chart_anim_2"type="text" class="dial" data-fgColor="#fff" data-bgColor="#ccc"  />     
 
         <!-- pink circle label -->
         <div class="circle pink dark">
@@ -28,11 +28,11 @@
         </div>
     </div>
 
-    <div id="chart3" class="chart_wrapper">
+    <div class="chart_wrapper">
         <!-- no circle label -->
-        <input type="text" class="dial chart_anim_3" data-fgColor="#444444" data-bgColor="#ccc" data-width="225" data-height="225" />
+        <input id="chart_anim_3"type="text" class="dial" data-fgColor="#444444" data-bgColor="#ccc" data-width="225" data-height="225" />
     </div>
-    <div id="message"></div>
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="js/jquery.knob.js"></script>
     <script>
@@ -40,35 +40,31 @@
         /* create jQuery knob with .dial class */
         $(".dial").knob({
             'readOnly': true
-        })
+        });
 
-        /* Animate chart class from startVal to endVal */
-        function animateChart (chartClass, startVal, endVal) {
-            $({value: startVal}).animate({value: endVal}, {
-                duration: 1000,
-                easing: 'swing',
-                step: function () {
-                    $('.' + chartClass).val(Math.ceil(this.value)).trigger('change');
-                }
-            });
-        }
         animateChart('chart_anim_1', 0, 79);
         animateChart('chart_anim_2', 0, 96);
         animateChart('chart_anim_3', 0, 54);
 
-        /* Update bh_value when input.animate changes */
-        /*$(".chart_anim_1").change(function () {
-            $("#eh_value").text($(this).val() + "%");
-        });*/
-        /*$(".chart_anim_2").change(function () {
-            $("#bh_value").text($(this).val() + "%");
-        });*/
-        $("input.dial.anim").change(function () {
-            var this_block = $(this).parent().parent().parent().children().html(); // $(this).parent().children(".pie_value").html();
-            // alert(this_block);
-            $("#message").append("<code>" + this_block + "</code>" + "<br> <br>");
-            $(this).parent().children(".pie_value").text($(this).val() + "%");
-        });
+        /* Update circle value when input.animate changes */
+        $("input.dial").change(function () {
+            $(this).parent().siblings(".circle").find(".pie_value").text($(this).val() + "%");
+        })
+
+        /* Animate chart from start_val to end_val */
+        function animateChart (chart_id, start_val, end_val) {
+            $({chart_value: start_val}).animate({chart_value: end_val}, {
+                duration: 1000, // 1 second animation
+                easing: 'swing',
+                step: function () {
+                    $('#' + chart_id).val(Math.ceil(this.chart_value)).trigger('change');
+                },
+                complete: function () {
+                    /* complete */
+                    console.log('complete');
+                }
+            });
+        };
     });
     </script>
 </body>
