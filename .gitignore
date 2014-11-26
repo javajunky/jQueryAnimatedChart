@@ -1,6 +1,6 @@
 .DS_Store
 ._*
 *.alias
+config.codekit
 scss/.sass-cache
 scss/.sass-cache/*
-config.codekit
