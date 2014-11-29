@@ -1,7 +1,7 @@
 jQueryAnimatedChart
 ===================
 
-Animated jQuery pie chart built on top of [jQuery Knob](http://anthonyterrien.com/knob/). Chart has a colored circle label that has a title, a tagline and a percentage value. Chart can be customized through [SCSS](http://sass-lang.com/). 
+Animated jQuery pie chart built on top of [jQuery Knob](http://anthonyterrien.com/knob/). Chart has a colored circle label that has a title, a tagline and a percentage value. Chart can be customized through [SCSS](http://sass-lang.com/). Check out the [demo here](http://wastedcontinuum.com/demos/jQueryAnimatedChart).
 
 ## Requirements
 * jQuery (tested with v1.11.1)
